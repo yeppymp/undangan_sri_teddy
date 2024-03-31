@@ -44,6 +44,7 @@
     $(".thebegining").click(function(){
         $(this).hide(); //hide the begining
         $('#konten').show()  //show konten
+        $("#audio").get(0).play(); //play musik
         document.documentElement.requestFullscreen();  //fullscreen
     
     });

@@ -104,6 +104,10 @@
 
 	<!-- END SPLASHSCREEN -->
 
+	<!-- ============== MUSIK =============== -->
+	<audio loop="true" src="musik/musik.mp3" id="audio"></audio>
+	<!-- ============== MUSIK =============== -->
+
 	<div style="display: none;" id="page"><a href="#"
 			class="js-fh5co-nav-toggle fh5co-nav-toggle fh5co-nav-white"><i></i></a>
 		<div id="fh5co-offcanvas"></div>
@@ -244,11 +248,35 @@
 			</div>
 		</div>
 
+		<div class="fh5co-bg payments" style="background-color:#1C5E8C;">
+			<div class="col-md-8 col-md-offset-2 text-center animate-box  fadeInUp animated-fast">
+				<h1 class="color-putih" style="margin-top:30px;">Love Gift</h1>
+		
+				<p style="color:#fff;">
+					Tanpa mengurangi rasa hormat, bagi anda yang ingin memberikan tanda kasih untuk kami, dapat melalui :</p>
+			</div>
+		
+			<div class="payment">
+				<img
+					src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Bank_Mandiri_logo.svg/2560px-Bank_Mandiri_logo.svg.png"
+					alt="Mandiri">
+				<p>
+					No Rekening 1340020332994 <br> a.n Sri Ismayanti
+				</p>
+			</div>
+		</div>
+
 		<footer>
 			<p> &copy; Copyright 2024, <a href="https://wa.me/6285156353146">Yeppy Mangun Puspitajudin</a>, All Rights
 				Reserved
 			</p>
 		</footer>
+
+		<!-- MUTE BUTTON -->
+		<a id="mute" href="#/" onclick="mute()" class="floatmute">
+			<i color="#fff" class="fa fa-volume-up my-float"></i>
+		</a>
+		<!-- MUTE BUTTON -->
 
 	</div>
 
@@ -308,6 +336,43 @@
 	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
 
 	<script src="js/jquery.popupoverlay.min.js"></script>
+<!--script mute-->
+
+<script>
+	document.addEventListener("DOMContentLoaded", function (event) {
+		let audio = document.getElementById("audio");
+		let button = document.getElementById('mute');
+		if (+localStorage.getItem('mute')) {
+			audio.muted = true;
+			button.innerHTML = '<i color="#000" class="fa fa-volume-off my-float"></i>';
+			audio.pause()
+		} else {
+			audio.volume = 0.9;
+			audio.play()
+		}
+	})
+
+	function mute() {
+		let audio = document.getElementById('audio');
+		let button = document.getElementById('mute');
+		let isMute = +localStorage.getItem('mute');
+		if (!isMute) {
+			audio.muted = true;
+			audio.pause()
+			button.innerHTML = '<i color="#000" class="fa fa-volume-off my-float"></i>';
+			localStorage.setItem('mute', 1);
+		} else {
+			audio.muted = false;
+			audio.volume = 0.9;
+			audio.play()
+			button.innerHTML = '<i color="#fff" class="fa fa-volume-up my-float"></i>';
+			localStorage.setItem('mute', 0);
+
+		}
+	}
+</script>
+
+<!--end script mute-->
 </body>
 
 </html>
